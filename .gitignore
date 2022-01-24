@@ -1,3 +1,6 @@
 #Ignore all node_module folders
 
-**/node_module
+**/node_modules
+# ./server/node_modules
+# ./public_app/node_modules
+# ./admin-app/node_modules
