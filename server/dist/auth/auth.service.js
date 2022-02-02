@@ -44,6 +44,9 @@ let AuthService = class AuthService {
             expires_in: "300s"
         };
     }
+    async register(user) {
+        return this.usersService.create(user);
+    }
 };
 AuthService = __decorate([
     (0, common_1.Injectable)(),

@@ -9,4 +9,5 @@ export declare class AuthService {
         access_token: string;
         expires_in: string;
     }>;
+    register(user: any): Promise<void>;
 }

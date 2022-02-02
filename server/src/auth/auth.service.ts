@@ -25,4 +25,8 @@ export class AuthService {
       expires_in: "300s"
     };
   }
+
+  async register(user: any) {
+    return this.usersService.create(user);
+  }
 }

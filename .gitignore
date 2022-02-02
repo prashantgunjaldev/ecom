@@ -4,3 +4,5 @@
 # ./server/node_modules
 # ./public_app/node_modules
 # ./admin-app/node_modules
+admin-app/.angular/
+server/dist/
