@@ -2,7 +2,7 @@ import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { IsNumber, IsString, Max, MaxLength, Min, MinLength } from 'class-validator';
 
 @Entity()
-export class User extends BaseEntity {
+export class Product extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -14,14 +14,25 @@ export class User extends BaseEntity {
   @Column()
   @MinLength(1)
   @IsString()
-  mobile: string;
+  description: string;
+
+  @Column()
+  @IsString()
+  image: string;
 
   @Column()
   @IsNumber()
-  role: number;
+  price: number;
 
   @Column()
-  @MinLength(3)
-  @IsString()
-  password: string;
+  @IsNumber()
+  discount: number;
+
+  @Column()
+  @IsNumber()
+  rating: number;
+
+  @Column()
+  @IsNumber()
+  quantity: number;
 }

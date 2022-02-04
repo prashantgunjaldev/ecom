@@ -1,6 +1,6 @@
 <div class="container">
   <app-header></app-header>
-  <app-menue></app-menue>
+  <app-menue *ngIf="showMenue()"></app-menue>
   <router-outlet></router-outlet>
   <app-footer></app-footer>
 </div>

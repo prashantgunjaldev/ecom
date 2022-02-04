@@ -1,15 +1,26 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { SessionService } from './session.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient,
+    private session: SessionService) {
+  }
 
   login(cred: any){
     return this.httpClient.post( environment.host+'/auth/login',cred);
+  }
+
+  uploadImage(){
+
+  }
+
+  createProduct(prd: any){
+    return this.httpClient.post(environment.host+'/product',prd, { headers:{'Authorization': 'Bearer '+this.session.getToken()}});
   }
 }

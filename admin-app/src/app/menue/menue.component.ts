@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { SessionService } from '../session.service';
 
 @Component({
   selector: 'app-menue',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenueComponent implements OnInit {
 
-  constructor() { }
+  constructor(private session: SessionService,
+    private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  logout(){
+    this.session.deleteToken();
+    this.router.navigateByUrl("");
   }
 
 }
