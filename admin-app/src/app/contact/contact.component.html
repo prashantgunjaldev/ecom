@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-12 text-center">
+        <h3>All Contact</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+<!-- <form> -->
+    <div class="form-group form-inline">
+        Full text search: <input class="form-control ml-2" type="text" [ngModel]="searchText" (ngModelChange)="search($event)"/>
+    </div>
+  <!-- </form> -->
+    <table class="table table-striped">
+        <thead>
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Contact Number</th>
+        <th scope="col">Email</th>
+        <th scope="col">Query</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let record of recordsToShow; index as i">
+            
+            <th scope="row">{{ i + 1 }}</th>
+            <td>
+                {{record.name}}
+            </td>
+            <td>
+                {{record.contactNo}}
+            </td>
+            <td>
+                {{record.email}}
+            </td>
+            <td>
+                {{record.query}}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+  </div>
+</div>

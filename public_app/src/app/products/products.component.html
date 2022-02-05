@@ -1,0 +1,20 @@
+<div class="row mt-3">
+    <div class="col-12 text-center">
+        <h3 class="text-primary">All Products</h3>
+    </div>
+</div>
+<div class="row mt-2">
+    <div class="col-3 me-1" *ngFor="let product of productList; index as i">
+        <div class="card">
+            <img src="{{host+'/images/'+product.image}}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{product.name}}</h5>
+              <p class="card-text">{{product.description}}</p>
+              <div class="price"><del> ₹{{product.price}} </del> &nbsp;
+                  <span> ₹{{getDiscountedPrice(product)}} </span> 
+            </div>              
+              <a href="#" class="btn btn-primary">Add To Cart</a>
+            </div>
+          </div>
+    </div>
+</div>

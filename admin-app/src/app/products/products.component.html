@@ -1,0 +1,58 @@
+<div class="row">
+    <div class="col-12 text-center">
+        <h3>All Products</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+<!-- <form> -->
+    <div class="form-group form-inline">
+        Full text search: <input class="form-control ml-2" type="text" [ngModel]="searchText" (ngModelChange)="search($event)"/>
+    </div>
+  <!-- </form> -->
+    <table class="table table-striped">
+        <thead>
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Image</th>
+        <th scope="col">Price</th>
+        <th scope="col">Discount</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let record of recordsToShow; index as i">
+            
+            <th scope="row">{{ i + 1 }}</th>
+            <!-- <td>
+                {{record.id}}
+            </td> -->
+            <td>
+                {{record.name}}
+            </td>
+            <td>
+                {{record.description}}
+            </td>
+            <td>
+                <img src="{{host+'/images/'+record.image}}" class="img-thumbnail" alt="Product Image">
+            </td>
+            <td>
+                {{record.price}}
+            </td>
+            <td>
+                {{record.discount}}
+            </td>
+            <td>
+                {{record.quantity}}
+            </td>
+            <td>
+                <a type="button" class="btn btn-sm btn-danger" (click)="onDelete(record)">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="col-12 text-center">
+        <h3>Contact Us</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+        <form  [formGroup]="form">
+            <div class="mb-3">
+              <label for="inputMobileNO" class="form-label">Your Name</label>
+              <input type="text" class="form-control" id="inputMobileNO" formControlName="name" aria-describedby="mobileHelp">
+              <small class="form-text text-danger" *ngIf="isError('name')">
+                    Please provide valid name.
+                </small>
+            </div>
+            <div class="mb-3">
+              <label for="desc" class="form-label">Contact Number</label>
+              <input type="text" class="form-control" id="desc" formControlName="contactNo" aria-describedby="mobileHelp">
+              <small class="form-text text-danger" *ngIf="isError('contactNo')">
+                    Please provide valid product contact number.
+                </small>
+            </div>
+            <div class="mb-3">
+              <label for="img" class="form-label">Email Id</label>
+              <input type="text" class="form-control" id="img" formControlName="email" aria-describedby="mobileHelp">
+              <small class="form-text text-danger" *ngIf="isError('email')">
+                    Please provide valid email id.
+                </small>
+            </div>
+            <div class="mb-3">
+              <label for="price" class="form-label">Your Query</label>
+              <textarea rows="5" class="form-control" formControlName="query">
+              </textarea>
+              <!-- <input type="number" class="form-control" id="price" formControlName="price" aria-describedby="mobileHelp"> -->
+              <small class="form-text text-danger" *ngIf="isError('query')">
+                    Please write your query.
+                </small>
+            </div>
+            <ngb-alert *ngIf="isInvalid" [type]="'danger'">Sorry something wend wrong.</ngb-alert>
+            <ngb-alert *ngIf="isSuccess" [type]="'success'">Thank you for contacting us.</ngb-alert>
+            <button type="submit" (click)="onSubmit()" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <div class="col-3"></div>
+</div>
