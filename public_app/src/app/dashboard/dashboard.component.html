@@ -47,7 +47,7 @@
               <div class="price"><del> ₹{{product.price}} </del> &nbsp;
                   <span> ₹{{getDiscountedPrice(product)}} </span> 
             </div>              
-              <a href="#" class="btn btn-primary">Add To Cart</a>
+              <a (click)="add(product)" class="btn btn-primary">Add To Cart</a>
             </div>
           </div>
     </div>

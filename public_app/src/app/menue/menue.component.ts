@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CartService } from '../cart.service';
 import { SessionService } from '../session.service';
 
 @Component({
@@ -10,7 +11,8 @@ import { SessionService } from '../session.service';
 export class MenueComponent implements OnInit {
 
   constructor(private session: SessionService,
-    private router: Router) { }
+    private router: Router,
+    private cart: CartService) { }
   
     isLoggedIn(): boolean{
       if(this.session.getToken()){
@@ -20,6 +22,10 @@ export class MenueComponent implements OnInit {
     }
 
   ngOnInit(): void {
+  }
+
+  getCartCount(){
+    return this.cart.getCount();
   }
 
   logout(){
