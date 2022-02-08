@@ -13,10 +13,8 @@ export class ProductService {
         return await this.ProductsRepository.find();
       }
     
-      findOne(mobile: string): Promise<Product> {
-        return this.ProductsRepository.findOne({ where:
-            { mobile: mobile }
-        });
+      findOne(id: string): Promise<Product> {
+        return this.ProductsRepository.findOne(id);
       }
     
       async create(Product: Product) {

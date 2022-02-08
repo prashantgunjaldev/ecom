@@ -6,6 +6,11 @@ export declare class AppController {
     login(req: any): Promise<{
         access_token: string;
         expires_in: string;
+        user: {
+            id: any;
+            name: any;
+            mobile: any;
+        };
     }>;
     register(user: User): Promise<void>;
     uploadedFile(file: any): Promise<{

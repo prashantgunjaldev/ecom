@@ -39,6 +39,10 @@ export class ApiService {
     return this.httpClient.post(environment.host+'/contact',prd);
   }
 
+  createAddress(data: any){
+    return this.httpClient.post(environment.host+'/address',data);
+  }
+
   getProducts(){
     return this.httpClient.get<Product[]>(environment.host+'/product');
   }

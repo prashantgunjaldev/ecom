@@ -1,5 +1,6 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { IsNumber, IsString, Max, MaxLength, Min, MinLength } from 'class-validator';
+import { Address } from 'src/address/address.entity';
 
 @Entity()
 export class User extends BaseEntity {
@@ -24,4 +25,7 @@ export class User extends BaseEntity {
   @MinLength(3)
   @IsString()
   password: string;
+
+  @OneToMany(() => Address, (addr) => addr.user)
+  public addresses: Address[];
 }

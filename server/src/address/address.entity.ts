@@ -1,0 +1,50 @@
+import { BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { IsNumber, IsString, Max, MaxLength, Min, MinLength } from 'class-validator';
+import { User } from 'src/users/user.entity';
+
+@Entity()
+export class Address extends BaseEntity {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  // @Column()
+  // userId: number;
+
+  @Column()
+  @MinLength(1)
+  @IsString()
+  name: string;
+
+  @Column()
+  @MinLength(1)
+  @IsString()
+  addressType: string;
+
+  @Column()
+  @IsString()
+  addrLine1: string;
+
+  @Column()
+  @IsString()
+  addrLine2: string;
+
+  @Column()
+  @IsString()
+  area: string;
+
+  @Column()
+  @IsString()
+  landmark: string;
+
+  @Column()
+  @IsString()
+  city: string;
+
+  @Column()
+  @IsString()
+  pin: string;
+
+  @ManyToOne(() => User, (user) => user.addresses)
+  public user: User;
+
+}
