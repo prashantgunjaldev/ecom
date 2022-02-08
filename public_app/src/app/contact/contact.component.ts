@@ -40,7 +40,6 @@ export class ContactComponent implements OnInit {
         this.isSubmited = false;
       });
     }
-      
   }
 
 }
