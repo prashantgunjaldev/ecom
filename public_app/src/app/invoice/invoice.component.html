@@ -1,0 +1,65 @@
+<div class="row">
+    <div class="col-12 text-center">
+        <h3>Order Details</h3>
+    </div>
+</div>
+<div class="row mt-2">
+    <div class="col-6">
+        <h6>Billing Information</h6>
+        <b>Name : </b> {{od.user.name}} ,<br>
+        <b>Mobile : </b> {{od.user.mobile}}
+    </div>
+    <div class="col-6">
+        <h6>Shipping Address</h6>
+        <b>Name : </b> {{od.address.name}} ,<br>
+        <b>Home / Flat No : </b> {{od.address.addrLine1}} ,<br>
+        <b>Society/ Building : </b> {{od.address.addrLine2}} ,<br>
+        <b>Landmark : </b> {{od.address.landmark}}, {{od.address.area}}, <br>
+        <b>City</b> : {{od.address.city}}, {{od.address.pin}}
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let record of od.orderDetails; index as i">
+            
+            <th scope="row">{{ i + 1 }}</th>
+            <td>
+                {{record.name}}
+            </td>
+            <td>
+                ₹  <del> {{record.price}} </del> &nbsp; {{getDiscountedPrice(record)}}
+            </td>
+            <td>
+                {{record.quantity}}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-6"></div>
+    <div class="col-4"></div>
+    <div class="col-2 float-right">
+        <b>Total Price : </b>  ₹ {{ od.orderAmount }}
+    </div>
+</div>
+
+<div class="row mt-2">
+    <div class="col-6"></div>
+    <div class="col-4"></div>
+    <div class="col-2 float-right">
+        <button class="btn btn-primary btn-small float-right" routerLink="/checkout">Checkout</button>
+    </div>
+</div>

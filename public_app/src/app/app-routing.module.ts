@@ -6,6 +6,7 @@ import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ContactComponent } from './contact/contact.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { InvoiceComponent } from './invoice/invoice.component';
 import { LoginComponent } from './login/login.component';
 import { NewProductComponent } from './new-product/new-product.component';
 import { ProductsComponent } from './products/products.component';
@@ -47,6 +48,11 @@ const routes: Routes = [
   {
     path:"checkout",
     component: CheckoutComponent,
+    canActivate:[AuthGuardGuard]
+  },
+  {
+    path:"invoice/:id",
+    component: InvoiceComponent,
     canActivate:[AuthGuardGuard]
   }
 ];

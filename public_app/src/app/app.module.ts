@@ -19,6 +19,7 @@ import { AboutComponent } from './about/about.component';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { RegisterComponent } from './register/register.component';
+import { InvoiceComponent } from './invoice/invoice.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { RegisterComponent } from './register/register.component';
     AboutComponent,
     CartComponent,
     CheckoutComponent,
-    RegisterComponent
+    RegisterComponent,
+    InvoiceComponent
   ],
   imports: [
     BrowserModule,

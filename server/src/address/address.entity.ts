@@ -1,6 +1,7 @@
-import { BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity, Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { IsNumber, IsString, Max, MaxLength, Min, MinLength } from 'class-validator';
 import { User } from 'src/users/user.entity';
+import { Order } from 'src/order/order.entity';
 
 @Entity()
 export class Address extends BaseEntity {
@@ -46,5 +47,8 @@ export class Address extends BaseEntity {
 
   @ManyToOne(() => User, (user) => user.addresses)
   public user: User;
+
+  @OneToMany(() => Order, (o) => o.address)
+  public orders: Order[];
 
 }

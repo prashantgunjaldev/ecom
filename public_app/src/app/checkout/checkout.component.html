@@ -90,20 +90,21 @@
         </ul>
         <b>Total Amout : </b> {{getPrice()}}<br><br>
         <h6>Payment Method</h6>
+
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="paymentMethod">
+            <input class="form-check-input" (click)="setPaymentMethod('cod')"  type="radio" value="cod" name="flexRadioDefault" id="paymentMethod">
             <label class="form-check-label" for="paymentMethod">
               Cash on delivery.
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="paymentMethod" checked>
+            <input class="form-check-input" (click)="setPaymentMethod('pod')" type="radio" value="pod" name="flexRadioDefault" id="paymentMethod" checked>
             <label class="form-check-label" for="paymentMethod">
               Pay on delivery
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="paymentMethod">
+            <input class="form-check-input" (click)="setPaymentMethod('online')" type="radio" value="online" name="flexRadioDefault" id="paymentMethod">
             <label class="form-check-label" for="paymentMethod">
               Online payment
             </label>

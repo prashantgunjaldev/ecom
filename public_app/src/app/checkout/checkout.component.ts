@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
 import { CartService } from '../cart.service';
 import { CartItem } from '../interfaces.def';
@@ -13,6 +14,7 @@ export class CheckoutComponent implements OnInit {
 
   userInfo: any = {};
   cartItems: CartItem[] = [];
+  paymentMethod : string = 'cod';
   form = this.formBuilder.group({
     name: ['', [Validators.required]],
     addressType: ['', [Validators.required]],
@@ -25,7 +27,9 @@ export class CheckoutComponent implements OnInit {
   });
   isSubmited: boolean = false;
 
-  constructor(private cart: CartService, private api: ApiService, private formBuilder: FormBuilder) { }
+  constructor(private cart: CartService, private api: ApiService, 
+    private formBuilder: FormBuilder,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.cartItems = this.cart.getItems();
@@ -42,6 +46,10 @@ export class CheckoutComponent implements OnInit {
     return this.form.controls[field].invalid && (this.isSubmited || this.form.controls[field].dirty || this.form.controls[field].touched)
   }
 
+  setPaymentMethod(method:string){
+    this.paymentMethod = method;
+  }
+
   onSubmit(){
     this.isSubmited = true;
     if(this.form.valid){
@@ -51,14 +59,18 @@ export class CheckoutComponent implements OnInit {
         if(data){
           console.log(data);
           // Create Order
-          let oderData = {
+          let orderData = {
             status: 1,
-            orderType: 'cod',
-            orderAmount: 100,
+            orderType: this.paymentMethod,
+            orderAmount: this.getPrice(),
             user: this.userInfo,
-            address: data
-          }
-          //Display order placed messages
+            address: data,
+            orderDetails: this.cartItems.map((item : CartItem) => { return{name: item.product.name, price: item.product.price, discount: item.product.discount, quantity: item.qty}})
+          };
+          this.api.createOrder(orderData).subscribe((odData: any)=>{
+            console.log(odData);
+            this.router.navigateByUrl("/invoice/"+odData.id);
+          });
         }
         // this.form.reset();
       });
