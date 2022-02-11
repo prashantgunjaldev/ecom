@@ -10,12 +10,18 @@ import { MulterModule } from '@nestjs/platform-express';
 import { AddressModule } from './address/address.module';
 import { OrderModule } from './order/order.module';
 import { OrderDetailsModule } from './order-details/order-details.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [MulterModule.register({
     dest: './images',
   }),
-  AuthModule, UsersModule, TypeOrmModule.forRoot(), ContactModule, ProductModule, AddressModule, OrderModule, OrderDetailsModule],
+  AuthModule, UsersModule, TypeOrmModule.forRoot(), ContactModule, ProductModule, AddressModule, OrderModule, OrderDetailsModule,
+  ServeStaticModule.forRoot({
+    rootPath: join(__dirname, '..', 'web'),
+  })
+],
   controllers: [AppController],
   providers: [AppService],
 })

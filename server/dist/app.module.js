@@ -19,6 +19,8 @@ const platform_express_1 = require("@nestjs/platform-express");
 const address_module_1 = require("./address/address.module");
 const order_module_1 = require("./order/order.module");
 const order_details_module_1 = require("./order-details/order-details.module");
+const serve_static_1 = require("@nestjs/serve-static");
+const path_1 = require("path");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -26,7 +28,11 @@ AppModule = __decorate([
         imports: [platform_express_1.MulterModule.register({
                 dest: './images',
             }),
-            auth_module_1.AuthModule, users_module_1.UsersModule, typeorm_1.TypeOrmModule.forRoot(), contact_module_1.ContactModule, product_module_1.ProductModule, address_module_1.AddressModule, order_module_1.OrderModule, order_details_module_1.OrderDetailsModule],
+            auth_module_1.AuthModule, users_module_1.UsersModule, typeorm_1.TypeOrmModule.forRoot(), contact_module_1.ContactModule, product_module_1.ProductModule, address_module_1.AddressModule, order_module_1.OrderModule, order_details_module_1.OrderDetailsModule,
+            serve_static_1.ServeStaticModule.forRoot({
+                rootPath: (0, path_1.join)(__dirname, '..', 'web'),
+            })
+        ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
     })

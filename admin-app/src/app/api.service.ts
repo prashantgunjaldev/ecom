@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Contact, Product } from './interfaces.def';
+import { Contact, Order, Product } from './interfaces.def';
 import { SessionService } from './session.service';
 
 @Injectable({
@@ -28,6 +28,18 @@ export class ApiService {
 
   getProducts(){
     return this.httpClient.get<Product[]>(environment.host+'/product');
+  }
+
+  getOrders(){
+    return this.httpClient.get<Order[]>(environment.host+'/order');
+  }
+
+  getOrder(id:any){
+    return this.httpClient.get<Order>(environment.host+'/order/'+id);
+  }
+
+  updateOrder(o: Order){
+    return this.httpClient.patch<Order>(environment.host+'/order/'+o.id,o);
   }
 
   getContacts(){

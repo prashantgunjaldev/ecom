@@ -68,11 +68,10 @@ export class CheckoutComponent implements OnInit {
             orderDetails: this.cartItems.map((item : CartItem) => { return{name: item.product.name, price: item.product.price, discount: item.product.discount, quantity: item.qty}})
           };
           this.api.createOrder(orderData).subscribe((odData: any)=>{
-            console.log(odData);
+            this.cart.clearCart();
             this.router.navigateByUrl("/invoice/"+odData.id);
           });
         }
-        // this.form.reset();
       });
     }
   }

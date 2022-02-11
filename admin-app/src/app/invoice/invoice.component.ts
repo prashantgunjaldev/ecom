@@ -72,5 +72,4 @@ export class InvoiceComponent implements OnInit {
     }
     return ' Prepaid (Via Online payment)';
   }
-
 }

@@ -29,6 +29,12 @@ export class CartService {
 
   }
 
+  clearCart(){
+    this.cartItems = [];
+    this.save();
+    // localStorage.removeItem('shoppingCartItems');
+  }
+
   getDiscountedPrice(p: Product){
     return p.price - (p.price * p.discount / 100);
   }

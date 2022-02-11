@@ -55,6 +55,10 @@ export class ApiService {
     return this.httpClient.get<Order>(environment.host+'/order/'+oId);
   }
 
+  updateOrder(o:Order){
+    return this.httpClient.patch<Order>(environment.host+'/order/'+o.id, o);
+  }
+
   getContacts(){
     return this.httpClient.get<Contact[]>(environment.host+'/contact');
   }

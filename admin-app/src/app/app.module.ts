@@ -15,6 +15,7 @@ import { NewProductComponent } from './new-product/new-product.component';
 import { JwtInterceptor } from './jwt.interceptor';
 import { ProductsComponent } from './products/products.component';
 import { ContactComponent } from './contact/contact.component';
+import { InvoiceComponent } from './invoice/invoice.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ContactComponent } from './contact/contact.component';
     DashboardComponent,
     NewProductComponent,
     ProductsComponent,
-    ContactComponent
+    ContactComponent,
+    InvoiceComponent
   ],
   imports: [
     BrowserModule,

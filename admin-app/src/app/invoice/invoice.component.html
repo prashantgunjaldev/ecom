@@ -64,11 +64,3 @@
         <b>Total Price : </b>  ₹ {{ od.orderAmount }}
     </div>
 </div>
-
-<div class="row mt-3" *ngIf="od.status > 0 && od.status < 3">
-    <div class="col-6"></div>
-    <div class="col-4"></div>
-    <div class="col-2 float-right">
-        <button class="btn btn-danger btn-small float-right" (click)="onCancel()">Cancel Order</button>
-    </div>
-</div>

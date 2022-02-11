@@ -34,7 +34,7 @@ export class Order extends BaseEntity {
   @ManyToOne(() => Address, (address) => address.orders)
   public address: Address;
 
-  @OneToMany(() => OrderDetails, (od) => od.order, { cascade: ['insert', 'update'] })
+  @OneToMany(() => OrderDetails, (od) => od.order, { cascade: ['insert'] })
   public orderDetails: OrderDetails[];
 
 }
