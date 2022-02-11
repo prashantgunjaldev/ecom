@@ -25,8 +25,18 @@ export class CartService {
     return this.cartItems;
   }
 
-  removeFromCart(){
+  removeFromCart(p: Product){
+    let index = -1;
+    for(let i=0;i< this.cartItems.length;i++){
+      if(this.cartItems[i].product.id === p.id){
+        index = i;
+      }
+    }
 
+    if(index > -1){
+      this.cartItems.splice(index,1);
+      this.save();
+    }
   }
 
   clearCart(){
